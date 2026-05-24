@@ -1,0 +1,1471 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open-Source Solutions Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwindcss.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#ecfdf5',
+                100: '#d1fae5',
+                200: '#a7f3d0',
+                300: '#6ee7b7',
+                400: '#34d399',
+                500: '#10b981',
+                600: '#059669',
+                700: '#047857',
+                800: '#065f46',
+                900: '#064e3b',
+                950: '#022c22',
+              },
+              warm: { 400: '#fb923c', 500: '#f97316', 600: '#ea580c' },
+              surface: {
+                900: '#0c0f1a',
+                800: '#111827',
+                700: '#1e293b',
+                600: '#334155',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            },
+            animation: {
+              float: 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 2s infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-15px)' },
+              },
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+      body {
+        background: #050810;
+        color: #e2e8f0;
+      }
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #10b981 0%,
+          #34d399 40%,
+          #f97316 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-glow {
+        background:
+          radial-gradient(
+            ellipse at 20% 30%,
+            rgba(16, 185, 129, 0.12) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 70%,
+            rgba(249, 115, 22, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 50% 50%,
+            rgba(139, 92, 246, 0.04) 0%,
+            transparent 60%
+          );
+      }
+      .grid-dots {
+        background-image: radial-gradient(
+          circle at 1px 1px,
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 0
+        );
+        background-size: 32px 32px;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(16, 185, 129, 0.25);
+        transform: translateY(-6px);
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.3),
+          0 0 40px rgba(16, 185, 129, 0.08);
+      }
+      .tag {
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.15);
+      }
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          #059669 0%,
+          #10b981 50%,
+          #34d399 100%
+        );
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+      }
+      .cat-erp {
+        background: rgba(139, 92, 246, 0.12);
+        border: 1px solid rgba(139, 92, 246, 0.25);
+        color: #c4b5fd;
+      }
+      .cat-crm {
+        background: rgba(59, 130, 246, 0.12);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        color: #93c5fd;
+      }
+      .cat-help {
+        background: rgba(236, 72, 153, 0.12);
+        border: 1px solid rgba(236, 72, 153, 0.25);
+        color: #f9a8d4;
+      }
+      .cat-cms {
+        background: rgba(168, 85, 247, 0.12);
+        border: 1px solid rgba(168, 85, 247, 0.25);
+        color: #d8b4fe;
+      }
+      .cat-analytics {
+        background: rgba(20, 184, 166, 0.12);
+        border: 1px solid rgba(20, 184, 166, 0.25);
+        color: #5eead4;
+      }
+      .cat-gps {
+        background: rgba(34, 197, 94, 0.12);
+        border: 1px solid rgba(34, 197, 94, 0.25);
+        color: #86efac;
+      }
+      .cat-mkt {
+        background: rgba(249, 115, 22, 0.12);
+        border: 1px solid rgba(249, 115, 22, 0.25);
+        color: #fdba74;
+      }
+      .cat-ecom {
+        background: rgba(245, 158, 11, 0.12);
+        border: 1px solid rgba(245, 158, 11, 0.25);
+        color: #fcd34d;
+      }
+      .cat-edu {
+        background: rgba(6, 182, 212, 0.12);
+        border: 1px solid rgba(6, 182, 212, 0.25);
+        color: #67e8f9;
+      }
+      .cat-hr {
+        background: rgba(244, 63, 94, 0.12);
+        border: 1px solid rgba(244, 63, 94, 0.25);
+        color: #fda4af;
+      }
+      .cat-sched {
+        background: rgba(99, 102, 241, 0.12);
+        border: 1px solid rgba(99, 102, 241, 0.25);
+        color: #a5b4fc;
+      }
+      .cat-dev {
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        color: #6ee7b7;
+      }
+      .cat-med {
+        background: rgba(220, 38, 38, 0.12);
+        border: 1px solid rgba(220, 38, 38, 0.25);
+        color: #fca5a5;
+      }
+      .cat-sec {
+        background: rgba(107, 114, 128, 0.12);
+        border: 1px solid rgba(107, 114, 128, 0.25);
+        color: #d1d5db;
+      }
+      .cat-pm {
+        background: rgba(234, 179, 8, 0.12);
+        border: 1px solid rgba(234, 179, 8, 0.25);
+        color: #fde047;
+      }
+      .cat-invoice {
+        background: rgba(14, 165, 233, 0.12);
+        border: 1px solid rgba(14, 165, 233, 0.25);
+        color: #7dd3fc;
+      }
+      .cat-asset {
+        background: rgba(124, 58, 237, 0.12);
+        border: 1px solid rgba(124, 58, 237, 0.25);
+        color: #c4b5fd;
+      }
+      .stars-5 {
+        color: #fbbf24;
+      }
+      .stars-4 {
+        color: #f59e0b;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050810;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 3px;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .filter-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.25s ease;
+      }
+      .filter-btn:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+      .filter-btn.active {
+        background: rgba(16, 185, 129, 0.12);
+        border-color: rgba(16, 185, 129, 0.4);
+        color: #6ee7b7;
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <!-- HERO -->
+    <section
+      class="relative min-h-[70vh] flex items-center hero-glow grid-dots overflow-hidden"
+    >
+      <div
+        class="absolute top-10 left-20 w-80 h-80 bg-brand-500/8 rounded-full blur-[100px] animate-float"
+      ></div>
+      <div
+        class="absolute bottom-10 right-20 w-96 h-96 bg-warm-500/6 rounded-full blur-[100px] animate-float-delayed"
+      ></div>
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full"
+      >
+        <div class="text-center">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-8"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"
+            ></span>
+            <span class="text-sm text-slate-400"
+              >32+ production-ready решений</span
+            >
+          </div>
+          <h1
+            class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-6"
+          >
+            <span class="text-white">Портфолио</span><br />
+            <span class="gradient-text">open-source решений</span>
+          </h1>
+          <p
+            class="text-lg sm:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+          >
+            Готовые к внедрению продукты для бизнеса любого масштаба.<br />
+            Без абонентской платы. На ваших серверах. С полной поддержкой.
+          </p>
+          <a
+            href="#projects"
+            class="btn-primary px-8 py-4 rounded-xl text-base font-semibold text-white inline-block mb-12"
+          >
+            Смотреть все решения ↓
+          </a>
+          <div
+            class="flex flex-wrap justify-center gap-8 text-sm text-slate-500"
+          >
+            <span>✓ $0 абонентской платы</span>
+            <span>✓ Полный контроль данных</span>
+            <span>✓ Production-ready</span>
+            <span>✓ Без vendor lock-in</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="border-y border-white/5 bg-surface-900/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div>
+            <div class="text-3xl sm:text-4xl font-bold gradient-text mb-1">
+              32+
+            </div>
+            <p class="text-sm text-slate-500">Решений</p>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-bold gradient-text mb-1">
+              12
+            </div>
+            <p class="text-sm text-slate-500">⭐⭐⭐⭐⭐ продуктов</p>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-bold gradient-text mb-1">
+              $0
+            </div>
+            <p class="text-sm text-slate-500">Абонентская плата</p>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-bold gradient-text mb-1">
+              3 дня+
+            </div>
+            <p class="text-sm text-slate-500">От запуска</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-20 relative">
+      <div class="absolute inset-0 hero-glow"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-12 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+            Все <span class="gradient-text">решения</span>
+          </h2>
+          <p class="text-slate-400 max-w-xl mx-auto">
+            Выберите категорию или просмотрите весь каталог.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-wrap justify-center gap-2 mb-12 reveal"
+          id="filters"
+        >
+          <button
+            onclick="filterProjects('all')"
+            class="filter-btn active px-4 py-2 rounded-lg text-xs font-medium"
+            data-filter="all"
+          >
+            Все
+          </button>
+          <button
+            onclick="filterProjects('erp')"
+            class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-400"
+            data-filter="erp"
+          >
+            ERP
+          </button>
+          <button
+            onclick="filterProjects('crm')"
+            class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-400"
+            data-filter="crm"
+          >
+            CRM
+          </button>
+          <button
+            onclick="filterProjects('help')"
+            class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-400"
+            data-filter="help"
+          >
+            Хелпдеск
+          </button>
+          <button
+            onclick="filterProjects('ecom')"
+            class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-400"
+            data-filter="ecom"
+          >
+            E-commerce
+          </button>
+          <button
+            onclick="filterProjects('edu')"
+            class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-400"
+            data-filter="edu"
+          >
+            Образование
+          </button>
+          <button
+            onclick="filterProjects('hr')"
+            class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-400"
+            data-filter="hr"
+          >
+            HR
+          </button>
+          <button
+            onclick="filterProjects('dev')"
+            class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-400"
+            data-filter="dev"
+          >
+            Разработка
+          </button>
+          <button
+            onclick="filterProjects('mkt')"
+            class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-400"
+            data-filter="mkt"
+          >
+            Маркетинг
+          </button>
+          <button
+            onclick="filterProjects('other')"
+            class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-400"
+            data-filter="other"
+          >
+            Другое
+          </button>
+        </div>
+
+        <div
+          id="projects-grid"
+          class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+        >
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="erp"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-erp"
+                >ERP</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Odoo</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              CRM, eCommerce, бухгалтерия, склад, POS, производство, HR. Для
+              среднего бизнеса и e-commerce.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Python</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PostgreSQL</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400"
+                >$15K–$100K</span
+              ><span class="text-xs text-slate-500">12–24 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="help"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-help"
+                >Хелпдеск</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Chatwoot</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Единый inbox для WhatsApp, Telegram, Email, Live Chat. AI-боты,
+              база знаний, аналитика. Для SaaS и e-commerce.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Ruby on Rails</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Vue.js 3</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$2K–$15K</span
+              ><span class="text-xs text-slate-500">1–4 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="cms"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-cms"
+                >CMS</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Ghost CMS</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Публикации, email-рассылки, платные подписки. SEO, headless API.
+              Для авторов и медиа.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Node.js</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >React 18</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$500–$10K</span
+              ><span class="text-xs text-slate-500">1–4 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="analytics"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-analytics"
+                >Аналитика</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Plausible</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Веб-аналитика без cookies. GDPR-compliant. Дашборд, цели,
+              конверсии, отчёты. Для e-commerce и гос.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Elixir</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >ClickHouse</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$500–$5K</span
+              ><span class="text-xs text-slate-500">3 дня–3 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="other"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-gps"
+                >GPS</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Traccar</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Реал-тайм GPS-трекинг, геозоны, алерты, отчёты по маршрутам. Для
+              транспорта и строительства.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Java 21</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >React</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$500–$10K</span
+              ><span class="text-xs text-slate-500">3 дня–4 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="ecom"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-ecom"
+                >E-commerce</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">WooCommerce</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Интернет-магазин на WordPress. Товары, корзина, 100+ платёжных
+              шлюзов, купоны, отчёты. Для малого бизнеса.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >WordPress</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$1K–$20K</span
+              ><span class="text-xs text-slate-500">1–6 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="other"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-sched"
+                >Запись</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Easy!Appointments</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Онлайн-запись на приёмы. Календарь, управление услугами,
+              провайдеры, синхронизация с Google Calendar. Для клиник и салонов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >CodeIgniter</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$500–$3K</span
+              ><span class="text-xs text-slate-500">1–2 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="dev"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-dev"
+                >Low-code</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Appsmith</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Визуальный конструктор дашбордов и админ-панелей. 25+ коннекторов
+              к БД и API, JavaScript-логика. Для IT-отделов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >React</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Java</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$2K–$15K</span
+              ><span class="text-xs text-slate-500">1–6 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="mkt"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-mkt"
+                >Маркетинг</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Mautic</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Email-кампании, сегментация, скоринг лидов, формы, лендинги,
+              automation flows. Для маркетинг-отделов и агентств.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Symfony</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$3K–$15K</span
+              ><span class="text-xs text-slate-500">2–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="edu"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-edu"
+                >LMS</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Moodle</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Система управления обучением. Курсы, тесты, форумы, журнал оценок,
+              сертификаты, SCORM, LTI. Для ВУЗов и корпораций.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >MySQL</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$5K–$200K</span
+              ><span class="text-xs text-slate-500">4–32 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="ecom"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-ecom"
+                >Рестораны</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">TastyIgniter</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Онлайн-заказ еды. Управление меню, доставка, самовывоз,
+              бронирование столов, платежи. Для ресторанов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Laravel</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$1K–$15K</span
+              ><span class="text-xs text-slate-500">1–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="help"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-help"
+                >Хелпдеск</span
+              ><span class="stars-5 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Zammad</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Мультиканальные обращения: email, chat, phone, соцсети.
+              Автоматизация, SLA, база знаний. Для среднего бизнеса.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Ruby on Rails</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Vue 3</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$5K–$30K</span
+              ><span class="text-xs text-slate-500">2–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="erp"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-erp"
+                >ERP</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">ERPNext</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              CRM, бухгалтерия, склад, производство, HR, eCommerce, проекты. Для
+              среднего бизнеса и стартапов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Python</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Frappe</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$5K–$100K</span
+              ><span class="text-xs text-slate-500">4–24 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="erp"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-erp"
+                >Бухгалтерия</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Akaunting</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Выставление счетов, управление расходами, банковские операции,
+              отчёты, модульная система расширений. Для ИП и фрилансеров.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Laravel</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$500–$5K</span
+              ><span class="text-xs text-slate-500">1–4 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="erp"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-erp"
+                >ERP/CRM</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Dolibarr</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              CRM, счета, склад, производство, HR, POS. 1000+ модулей. Для
+              малого и среднего бизнеса.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >MySQL</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$3K–$15K</span
+              ><span class="text-xs text-slate-500">4–12 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="crm"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-crm"
+                >CRM</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">EspoCRM</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Лиды, контакты, сделки, кампании, кастомные сущности, workflow
+              automation. Для малого и среднего бизнеса.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP 8.3</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >MySQL 8+</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$2K–$30K</span
+              ><span class="text-xs text-slate-500">2–12 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="crm"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-crm"
+                >CRM</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Twenty CRM</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Компании, контакты, сделки, воронки. Кастомные объекты, GraphQL
+              API, email-интеграция, workflows. Для стартапов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >TypeScript</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >React</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$2K–$30K</span
+              ><span class="text-xs text-slate-500">1–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="ecom"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-ecom"
+                >E-commerce</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Bagisto</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              B2B, маркетплейс, мульти-арендность, POS, headless commerce. Для
+              ритейлеров и маркетплейсов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Laravel</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Vue.js</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$5K–$50K</span
+              ><span class="text-xs text-slate-500">4–16 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="edu"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-edu"
+                >Видео</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">BigBlueButton</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Видеоконференции, интерактивная доска, чат, опросы, breakout
+              rooms, запись сессий. Для школ и корпораций.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Java 17</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >React 18</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$3K–$25K</span
+              ><span class="text-xs text-slate-500">2–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="other"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-sched"
+                >Scheduling</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Cal.com</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Планирование встреч, shareable links, командные встречи,
+              workflows. Интеграции с Google Calendar, Zoom, Stripe. Для
+              фрилансеров и клиник.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Next.js</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >TypeScript</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$500–$15K</span
+              ><span class="text-xs text-slate-500">3 дня–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="edu"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-edu"
+                >LMS</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Frappe Learning</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Структурированные курсы, квизы, задания, сертификаты,
+              Zoom-интеграция, мониторинг прогресса. Для онлайн-школ и ВУЗов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Python</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Vue 3</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$2K–$20K</span
+              ><span class="text-xs text-slate-500">2–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="hr"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-hr"
+                >HR</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Frappe HRMS</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Жизненный цикл сотрудника, отпуска, payroll, рекрутинг,
+              performance, обучение. Для среднего бизнеса.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Python</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Vue.js</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$3K–$15K</span
+              ><span class="text-xs text-slate-500">3–10 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="hr"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-hr"
+                >HRM</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">OrangeHRM</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              PIM, отпуска, посещаемость, рекрутинг, performance, корпоративная
+              соцсеть. Для среднего бизнеса и HR-агентств.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Vue 3</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$3K–$15K</span
+              ><span class="text-xs text-slate-500">3–10 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="other"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-pm"
+                >PM</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Huly</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Задачи, доски, спринты, видеозвонки, AI-чат, GitHub-синхронизация,
+              полнотекстовый поиск. Для IT-команд.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >TypeScript</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Node.js</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$5K–$30K</span
+              ><span class="text-xs text-slate-500">2–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="erp"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-invoice"
+                >Инвойсы</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Invoice Ninja</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Инвойсы, рекуррентные счета, учёт расходов, тайм-трекинг,
+              онлайн-платежи. Для фрилансеров и малого бизнеса.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Laravel</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$500–$8K</span
+              ><span class="text-xs text-slate-500">3 дня–4 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="dev"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-sec"
+                >IAM</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Keycloak</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              SSO, MFA, OAuth 2.0, OpenID Connect, SAML 2.0, федеративные
+              хранилища. Для среднего и крупного бизнеса.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Java</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Docker</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$5K–$30K</span
+              ><span class="text-xs text-slate-500">2–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="mkt"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-mkt"
+                >SMM</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Mixpost</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Планирование и публикация постов в 10+ соцсетей, медиа-библиотека,
+              аналитика. Для SMM-специалистов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Laravel</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$500–$10K</span
+              ><span class="text-xs text-slate-500">2 дня–8 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="other"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-med"
+                >Медицина</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">OpenEMR</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Электронные медицинские карты, управление практикой, биллинг, FHIR
+              API. Для клиник и телемедицины.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Node.js</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400"
+                >$10K–$100K</span
+              ><span class="text-xs text-slate-500">8–32 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="help"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-help"
+                >Хелпдеск</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Peppermint</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Создание тикетов, история клиентов, заметки, to-do списки. Для
+              IT-отделов и сервисных компаний.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Next.js 14</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Fastify</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$1K–$5K</span
+              ><span class="text-xs text-slate-500">1–3 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="other"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-asset"
+                >Активы</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Snipe-IT</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Учёт техники, лицензий, назначений сотрудникам, QR-коды,
+              амортизация, отчёты. Для IT-отделов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >PHP</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Laravel</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$2K–$15K</span
+              ><span class="text-xs text-slate-500">1–6 нед</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="dev"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-dev"
+                >BaaS</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">PocketBase</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              REST API, аутентификация, realtime-подписки, файловое хранилище,
+              админ-панель — всё в одном файле. Для MVP и стартапов.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Go</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >SQLite</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$500–$5K</span
+              ><span class="text-xs text-slate-500">2–7 дней</span>
+            </div>
+          </div>
+
+          <div
+            class="card rounded-2xl p-6 project-item reveal"
+            data-category="dev"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="px-2.5 py-0.5 rounded-md text-[10px] font-medium cat-dev"
+                >Mobile</span
+              ><span class="stars-4 text-sm">⭐⭐⭐⭐</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Ignite</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Генерация React Native проектов из терминала. Навигация, API-слой,
+              E2E-тесты. Для мобильных разработчиков.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >TypeScript</span
+              ><span class="tag px-2 py-0.5 rounded text-[10px] text-brand-300"
+                >Expo</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between pt-3 border-t border-white/5"
+            >
+              <span class="text-sm font-semibold text-brand-400">$5K–$15K</span
+              ><span class="text-xs text-slate-500">2–4 нед</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="py-12 border-t border-white/5 text-center">
+      <p class="text-sm text-slate-600">
+        © 2026 Open-Source Solutions Portfolio
+      </p>
+    </section>
+
+    <script>
+      function filterProjects(category) {
+        const items = document.querySelectorAll('.project-item')
+        const buttons = document.querySelectorAll('.filter-btn')
+        buttons.forEach((b) => {
+          b.classList.remove('active')
+          b.classList.add('text-slate-400')
+        })
+        const activeBtn = document.querySelector(`[data-filter="${category}"]`)
+        activeBtn.classList.add('active')
+        activeBtn.classList.remove('text-slate-400')
+        items.forEach((item) => {
+          if (category === 'all') {
+            item.style.display = ''
+          } else if (category === 'other') {
+            const cat = item.dataset.category
+            const main = [
+              'crm',
+              'erp',
+              'help',
+              'ecom',
+              'edu',
+              'hr',
+              'dev',
+              'mkt',
+            ]
+            item.style.display = main.indexOf(cat) === -1 ? '' : 'none'
+          } else {
+            item.style.display =
+              item.dataset.category === category ? '' : 'none'
+          }
+        })
+      }
+      function revealOnScroll() {
+        document.querySelectorAll('.reveal').forEach((el) => {
+          if (el.getBoundingClientRect().top < window.innerHeight - 80)
+            el.classList.add('visible')
+        })
+      }
+      window.addEventListener('scroll', revealOnScroll)
+      window.addEventListener('load', revealOnScroll)
+    </script>
+  </body>
+</html>
